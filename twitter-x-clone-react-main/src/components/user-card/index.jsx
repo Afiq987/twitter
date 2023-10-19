@@ -1,4 +1,4 @@
-import Button from "../../components/button";
+
 import {useState} from "react";
 
 export default function UserCard({user}) {
@@ -18,7 +18,7 @@ export default function UserCard({user}) {
 			</div>
 			<div>
 				{following ? (
-					<Button
+					<button
 						variant="white-outline"
 						size="small"
 						onClick={() => setFollowing(false)}
@@ -26,11 +26,11 @@ export default function UserCard({user}) {
 					>
 						<div className="flex group-hover:hidden">Following</div>
 						<div className="hidden group-hover:flex">Unfollow</div>
-					</Button>
+					</button>
 				) : (
-					<Button variant="white" size="small" onClick={() => setFollowing(true)}>
+					<button variant="white" size="small" onClick={() => setFollowing(true)}>
 						Follow
-					</Button>
+					</button>
 				)}
 			</div>
 		</button>

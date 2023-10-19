@@ -7,7 +7,7 @@ import {setModal} from "../../../../../store/modal/actions";
 export default function More() {
 	return (
 		<Popover className="relative">
-			<Popover.Button className="py-[3px] w-full text-left group outline-none">
+			<Popover.Button className="py-[3px] z-12  w-[50px] sm:w-full text-left group outline-none">
 				<div
 					className="p-3 rounded-full transition-colors inline-flex items-center gap-5 group-hover:bg-[color:var(--background-third)]">
 					<div className="w-[1.641rem] h-[1.641rem] relative">

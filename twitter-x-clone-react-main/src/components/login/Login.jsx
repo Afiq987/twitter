@@ -32,10 +32,12 @@ function Login() {
     <div className="bg-white h-screen  ">
       <div className="w-[600px] h-[650px] bg-black   mx-auto rounded-[25px] px-4">
       <div className="flex  items-center gap-[45%]">
-       
-          <svg viewBox="0 0 24 24" className="h-5">
+       <Link to="/">
+       <svg viewBox="0 0 24 24" className="h-5">
           <path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z" fill="#fff"/>
           </svg>
+       </Link>
+          
        
         
           <Link to="/" className="text-[color:var(--color-base)] w-[3.25rem] h-[3.25rem] rounded-full flex items-center justify-center hover:bg-[color:var(--background-third)] transition-colors">

@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-import Button from "../../components/button";
+
 
 import {useAppearance} from "../../store/appearance/hooks";
 import classNames from "classnames";
@@ -249,7 +249,7 @@ export default function AppearanceModal({close}) {
 				</div>
 
 				<div className="flex items-center justify-center pt-4">
-					<Button onClick={close}>Done</Button>
+					<button onClick={close}>Done</button>
 				</div>
 
 			</div>

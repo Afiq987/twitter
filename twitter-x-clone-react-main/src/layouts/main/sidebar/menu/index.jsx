@@ -19,7 +19,7 @@ export default function Menu() {
         <NavLink
           key={index}
           to={typeof menu.path === "function" ? menu.path() : menu.path}
-          className="py-[0.188rem] block group" >
+          className=" block group" >
           {({ isActive }) => (
             <div
               className={classNames(

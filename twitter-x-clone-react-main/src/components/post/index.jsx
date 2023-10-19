@@ -7,7 +7,7 @@ const account = useAccount()
 		<div
 			className="px-4 py-3 gap-3 border-b border-[color:var(--background-third)]  relative before:absolute before:z-[-1] before:transition-colors before:opacity-50 before:inset-0 before:hover:bg-[color:var(--background-secondary)]">
 <div className="flex ">
-<img src={account.avatar} className="w-10 flex-shrink-0 h-10 rounded-full" alt=""/>
+<img src={account.avatar} className="w-10 z-[-5] flex-shrink-0 h-10 rounded-full" alt=""/>
 <div>
 <div className="mx-3 flex gap-2">
 						<h6 className="font-bold leading-[1.25rem]">{account.fullName}</h6>
