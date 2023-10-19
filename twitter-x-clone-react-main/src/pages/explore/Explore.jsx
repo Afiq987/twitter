@@ -1,6 +1,6 @@
 import Search from "../../layouts/main/rightbar/search";
-import Topics from "../../layouts/main/rightbar/topics/Topics";
 
+import ExploreTopics from "./exploreTopics";
 export default function Explore() {
 	return (
 		<div>
@@ -16,8 +16,10 @@ export default function Explore() {
 				</div>
 				
 				
-				<Topics/>
+
+	<ExploreTopics/>
+</div>
 			
-		</div>
+		
 	)
 }

@@ -57,8 +57,9 @@ console.log(img);
 
   };
   return (
-    <div className="for-you flex flex-wrap ">
-      <div className="flex space-x-4 px-4 py-3">
+    <div className="for-you flex flex-wrap  ">
+      <div className="flex border-b border-gray-800 w-full">
+      <div className="flex space-x-4 px-4 py-3 ">
         <img
           src="https://pbs.twimg.com/profile_images/1706362039935938560/_epNszdP_400x400.jpg"
           alt="profileFoto"
@@ -104,13 +105,15 @@ console.log(img);
             </div>
           </div>
           <button
-            className="bg-[color:var(--color-primary)] invisible lg:block hover:opacity-90 text-white rounded-full px-4 py-2"
+            className="bg-[color:var(--color-primary)]  hover:opacity-90 text-white rounded-full px-4 py-2"
             onClick={post}>
              
             Post
           </button>
         </div>
       </div>
+      </div>
+    
       <WVList>
         {posts.map((post, key) => (
           <Post {...post} key={key} />

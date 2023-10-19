@@ -9,7 +9,7 @@ export default function Topics() {
 	return (
 		<SidebarSection
 			title="Trends for you"
-			more="/trends"
+			more="/explore"
 		>
 			{topics.map((topic, index) => <Topic item={topic} key={index}/>)}
 		</SidebarSection>

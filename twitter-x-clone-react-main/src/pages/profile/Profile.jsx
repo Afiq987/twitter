@@ -1,26 +1,33 @@
 import StickyHeader from "../../components/sticky-header";
+import Header from "./Header";
 
-
+import {useAccount} from "../../store/auth/hooks";
+import Posted from "../../components/post/Posted";
 
 export default function Profile() {
 
-	
+	const account = useAccount()
 
 	return (
-		<StickyHeader >
+		<>
+<Header/>
+		<div className="absolute top-0 max-w-[598px]">
+			
+			<img className="h-[250px] w-[600px]" src="https://wallpaperfx.com/view_image/beautiful-nature-1024x600-wallpaper-4691.jpg" alt="" />
+			<img src={account.avatar} className="w-[150px] absolute bottom-[-70px] border-[5px] border-black left-5 h-[150px]  rounded-full" alt=""/>
+		</div>
+		<div className="">
+		<p>{account.fullName}</p>
+		</div>
+		<div className="z-10 absolute top-[500px]">
+		<Posted />
+		</div>
+		
+		</>
+		
 	
-				<svg viewBox="0 0 24 24" className="h-5">
-					<path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z" fill="var(--color-base)"></path>
-					</svg>
-				
-				
-				<div>
-		<h3 className="px-4  flex items-center text-xl font-bold">
-				Afiq Hasanov (Aydın)
-			</h3>
-			<p className="ms-4">5 post </p>
-				</div>
-		</StickyHeader>
+			
+		
 			
 			
 		
