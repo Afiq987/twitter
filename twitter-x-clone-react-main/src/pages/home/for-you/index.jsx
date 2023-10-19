@@ -104,9 +104,9 @@ console.log(img);
             </div>
           </div>
           <button
-            className="bg-[color:var(--color-primary)] hover:opacity-90 text-white rounded-full px-4 py-2"
-            onClick={post}
-          >
+            className="bg-[color:var(--color-primary)] invisible lg:block hover:opacity-90 text-white rounded-full px-4 py-2"
+            onClick={post}>
+             
             Post
           </button>
         </div>

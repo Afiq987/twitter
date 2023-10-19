@@ -18,7 +18,7 @@ export default function More() {
 							/>
 						</svg>
 					</div>
-					<div className="pr-4 text-xl">
+					<div className="pr-4 text-xl hidden lg:block">
 						More
 					</div>
 				</div>
