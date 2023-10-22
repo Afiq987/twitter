@@ -11,15 +11,20 @@ import {
   PollIcon,
   ScheduleIcon,
 } from "../postArea/homePostIcons";
+import { useDispatch, useSelector } from "react-redux";
+import { setPosts } from "../../../store/postReducer/postReducer";
+import { object } from "prop-types";
+import { useAccount } from "../../../store/auth/hooks";
 
 export default function ForYou() {
-  const [posts, setPosts] = useState([]);
+  const dispatch=useDispatch();
+  const posts = useSelector((state) => state.postReducer.posts);
   const [value, setValue] = useState("");
   const [img, setImg] = useState("");
-
+const account=useAccount()
   const post = async () => {
     const response = await fetch(
-      "https://twitter-cd437-default-rtdb.firebaseio.com/post.json",
+      `https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${account.id}/posts.json`,
       {
         method: "POST", // or 'PUT'
         headers: {
@@ -31,9 +36,9 @@ export default function ForYou() {
   };
 
   useEffect(() => {
-    fetch("https://twitter-cd437-default-rtdb.firebaseio.com/post.json")
+    fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${account.id}/posts.json`)
       .then((res) => res.json())
-      .then((data) => setPosts(Object.values(data)));
+      .then((data) => console.log(data,"daatalat"));
   }, []);
 
   const handleFileChange = (event) => {
@@ -53,7 +58,6 @@ export default function ForYou() {
 
       reader.readAsDataURL(file);
     }
-console.log(img);
 
   };
   return (
@@ -115,7 +119,7 @@ console.log(img);
       </div>
     
       <WVList>
-        {posts.map((post, key) => (
+        {[...posts].reverse().map((post, key) => (
           <Post {...post} key={key} />
         ))}
       </WVList>

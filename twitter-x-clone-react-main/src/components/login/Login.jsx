@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "../../layouts/main/sidebar/logo/Logo";
+import { useAccount } from "../../store/auth/hooks";
+import { useDispatch } from "react-redux";
+import { _setCurrentAccount } from "../../store/auth";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
- 
+    const dispatch = useDispatch();
+    const account=useAccount()
   const login = (e) => {
    
     e.preventDefault()
@@ -16,9 +20,10 @@ function Login() {
         // Signed in
         const user = userCredential.user;
         // ...
-        console.log("duzdur");
+        updateProfile(user, {
+          displayName: "Kullanıcı Adı" // Burada istediğiniz kullanıcı adını belirleyebilirsiniz
+        })
         localStorage.setItem("user",true)
-        window.location.reload()
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -26,6 +31,10 @@ function Login() {
         console.log("sehvdir");
     
       });
+      dispatch(_setCurrentAccount({
+      email
+      }));
+      console.log(account);
   };
 
   return (
@@ -68,7 +77,7 @@ function Login() {
         <button className="w-full bg-white text-[#0F1419] text-xl rounded-full py-[5px] font-semibold">Sign in</button>
       </form>
 
-      <Link className="block text-center mt-6 bg-white text-[#0F1419] text-xl rounded-full py-[5px] font-semibold" to="/register">Register</Link>
+      <Link className="block text-center mt-6 bg-white text-[#0F1419] text-xl rounded-full py-[5px] font-semibold" to="/register" login={login}>Register</Link>
 
       <button className="w-full text-center mt-6 bg-transparent text-white  border border-gray rounded-full py-[5px] font-semibold" to="/register">Forgot password?</button>
       </div>

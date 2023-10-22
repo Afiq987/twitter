@@ -33,9 +33,6 @@ export default function Home() {
 	
     height: '3000',
 	theme:"dark"
-		 
-		  
-	
   }}
 />
 					</div>

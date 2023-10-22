@@ -19,16 +19,15 @@ export default function UserCard({user}) {
 			<div>
 				{following ? (
 					<button
-						variant="white-outline"
-						size="small"
+						
 						onClick={() => setFollowing(false)}
-						className="whitespace-nowrap group"
+						className="whitespace-nowrap group px-4 h-8 text-sm border-[1px] border-gray-700 hover:bg-[#F4212E]/20  rounded-full  hover:text-[#F4212E] text-[--color-base] font-bold"
 					>
 						<div className="flex group-hover:hidden">Following</div>
 						<div className="hidden group-hover:flex">Unfollow</div>
 					</button>
 				) : (
-					<button variant="white" size="small" onClick={() => setFollowing(true)}>
+					<button className="bg-[color:var(--color-base)] px-4 h-8 text-sm border-[1px] border-gray-700  rounded-full   text-[color:var(--background-primary)] font-bold" onClick={() => setFollowing(true)}>
 						Follow
 					</button>
 				)}
