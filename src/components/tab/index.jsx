@@ -4,7 +4,7 @@ import Content from "../../components/tab/content";
 import PropTypes from "prop-types";
 import {TabContext} from "../../components/tab/context";
 import {useEffect, useState} from "react";
-import StickyHeader from "../../components/sticky-header";
+import StickyHeader from "../sticky-header";
 
 export default function Tab({children, activeTab}) {
 

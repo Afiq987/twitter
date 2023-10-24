@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+
+
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "../../layouts/main/sidebar/logo/Logo";
 import { useAccount } from "../../store/auth/hooks";
@@ -11,19 +14,18 @@ function Login() {
     const dispatch = useDispatch();
     const account=useAccount()
   const login = (e) => {
-   
     e.preventDefault()
-    
     const auth = getAuth();
+
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         // ...
-        updateProfile(user, {
-          displayName: "Kullanıcı Adı" // Burada istediğiniz kullanıcı adını belirleyebilirsiniz
-        })
+      
         localStorage.setItem("user",true)
+        console.log("giris edildi");
+        window.location.reload()
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -32,7 +34,7 @@ function Login() {
     
       });
       dispatch(_setCurrentAccount({
-      email
+        email
       }));
       console.log(account);
   };

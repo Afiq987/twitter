@@ -1,4 +1,4 @@
-// import { posts as postData } from "~/mock/posts";
+
 
 import Post from "../../../components/post";
 import { WVList } from "virtua";
@@ -61,7 +61,7 @@ const account=useAccount()
 
   };
   return (
-    <div className="for-you flex flex-wrap  ">
+    <div className="for-you flex flex-wrap mt-[110px] ">
       <div className="flex border-b border-gray-800 w-full">
       <div className="flex space-x-4 px-4 py-3 ">
         <img
@@ -77,7 +77,7 @@ const account=useAccount()
           onChange={(e) => setValue(e.target.value)}
           value={value}
         ></textarea>
-        <div className="flex items-center justify-between">
+        <div className=" flex items-center justify-between">
           <div className="flex      items-center justify-center -ml-3 ">
             <div
               className="w-10 h-10 flex items-center justify-center   rounded-full transition-all duration-200"

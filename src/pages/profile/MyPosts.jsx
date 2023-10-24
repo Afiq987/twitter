@@ -1,40 +1,20 @@
-import StickyHeader from "../../components/sticky-header";
-import Header from "./Header";
-
-import { useAccount } from "../../store/auth/hooks";
+import React, { useEffect, useState } from 'react'
+import { useAccount } from '../../store/auth/hooks';
+import { useSelector } from 'react-redux';
 import Posted from "../../components/post/Posted";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-
-export default function Profile() {
-  const account = useAccount();
-  const posts = useSelector((state) => state.postReducer.posts);
-  const [activeUser,setActiveUser]=useState([])
-console.log(account);
-  useEffect(() => {
-    fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${account.id}/posts.json`)
-      .then((res) => res.json())
-      .then((data) =>setActiveUser(Object.values(data)));
-  }, []);
+function MyPosts() {
+    const account = useAccount();
+    const posts = useSelector((state) => state.postReducer.posts);
+    const [activeUser,setActiveUser]=useState([])
+  console.log(account);
+    useEffect(() => {
+      fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${account.id}/posts.json`)
+        .then((res) => res.json())
+        .then((data) =>setActiveUser(Object.values(data)));
+    }, []);
   return (
     <>
-      <Header />
-      <div className="absolute top-0 max-w-[598px]">
-        <img
-          className="h-[250px] w-[600px]"
-          src="https://wallpaperfx.com/view_image/beautiful-nature-1024x600-wallpaper-4691.jpg"
-          alt=""
-        />
-        <img
-          src={account.avatar}
-          className="w-[150px] absolute bottom-[-70px] border-[5px] border-black left-5 h-[150px]  rounded-full"
-          alt=""
-        />
-      </div>
-      <div className="">
-        <p>{account.fullName}</p>
-      </div>
-      <div className="z-10 absolute top-[500px]">
+     <div className=" mt-[250px] ">
         {[...activeUser].reverse().map((item, index) => (
             <div className="flex ">
 			<img
@@ -61,15 +41,15 @@ console.log(account);
 				</div>
 			  </div>
 			  <div className="flex-1">
-				<header className="leading-5 flex items-center gap-2 mb-0.5">
+				<div className="leading-5 flex items-center gap-2 mb-0.5">
 				  <a
 					href="#"
 					className="hover:underline flex items-center font-bold"
 				  ></a>
 				  <div className="text-[color:var(--color-base-secondary)] flex items-center gap-1.5">
-					<div></div>
+				
 				  </div>
-				</header>
+				</div>
 				<Posted {...item} />
 			  </div>
 			</div>
@@ -77,5 +57,7 @@ console.log(account);
         ))}
       </div>
     </>
-  );
+  )
 }
+
+export default MyPosts

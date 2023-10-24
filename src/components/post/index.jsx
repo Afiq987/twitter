@@ -1,6 +1,9 @@
 import { numberFormat } from "../../utils/formats";
 
 import { useAccount } from "../../store/auth/hooks";
+
+
+import MyPosts from "../../pages/profile/MyPosts";
 import Posted from "./Posted";
 export default function Post({ img, value }) {
   const account = useAccount();
@@ -40,7 +43,8 @@ export default function Post({ img, value }) {
                 <div></div>
               </div>
             </header>
-            <Posted value={value} img={img} />
+            <Posted/>
+            <MyPosts/>
           </div>
         </div>
       </div>

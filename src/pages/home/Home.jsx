@@ -3,7 +3,8 @@ import StickyHeader from "../../components/sticky-header";
 
 import Tab from "../../components/tab";
 import { Timeline } from 'react-twitter-widgets'
-import ForYou from ".././home/for-you";
+import ForYou from "./for-you/ForYou";
+import MyPosts from "../profile/MyPosts";
 
 export default function Home() {
 	return (
@@ -21,6 +22,10 @@ export default function Home() {
 				</StickyHeader>
 				<Tab.Content id="for-you">
 					<ForYou />
+					
+					<MyPosts />
+				
+					
 				</Tab.Content>
 				<Tab.Content id="followings">
 					<div className="mt-4">

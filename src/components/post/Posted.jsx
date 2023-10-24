@@ -5,7 +5,7 @@ function Posted({ value, img }) {
     <div className="ps-3">
       <div>{value}</div>
 
-      <img src={`data:image/jpeg;base64,${img}`} alt="" />
+      <img className="max-w-[540px]" src={`data:image/jpeg;base64,${img}`} alt="" />
       <div className="flex -ml-1.5 mt-1.5">
         <div className="flex-1 group flex items-center gap-px">
           <div className="w-[2.172rem] h-[2.172rem] transition-colors flex items-center justify-center text-[color:var(--color-base-secondary)] group-hover:bg-[#1d9bf01a] rounded-full group-hover:text-[#1d9bf0]">
