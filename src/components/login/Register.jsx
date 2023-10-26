@@ -96,7 +96,7 @@ function Register({ login }) {
             />
             <input
               className="h-[60px] w-full bg-transparent before: border border-gray rounded-sm "
-              type="email"
+              type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"

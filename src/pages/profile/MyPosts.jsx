@@ -14,7 +14,7 @@ function MyPosts() {
     }, []);
   return (
     <>
-     <div className=" mt-[250px] ">
+     <div className="  ">
         {[...activeUser].reverse().map((item, index) => (
             <div className="flex ">
 			<img

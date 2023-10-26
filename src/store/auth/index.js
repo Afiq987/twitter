@@ -16,12 +16,7 @@ const initialState = {
       fullName: 'Afiq Hasanov (Aydın)',
       avatar: 'https://pbs.twimg.com/profile_images/1706362039935938560/_epNszdP_400x400.jpg',
     },
-    {
-      id: 2,
-      username: 'vusalhasanov',
-      fullName: 'Vüsal Hasanov',
-      avatar: 'https://pbs.twimg.com/profile_images/1353806309397655553/0zEtkDvx_400x400.jpg',
-    },
+  
   ],
 };
 

@@ -7,7 +7,7 @@ import MainLayout from "../layouts/main";
 import Profile from "../pages/profile/Profile";
 import Messages from "../pages/messages/Messages";
 import Lists from "../pages/lists/Lists";
-import Bookmarks from "../pages/bookmarks/Bookmarks";
+import Communities from "../pages/communities/Communities";
 import Login from "../components/login/Login";
 import Register from "../components/login/Register";
 
@@ -37,11 +37,11 @@ const links = createBrowserRouter([
 				element: <Lists />
 			},
 			{
-				path: 'bookmarks',
-				element: <Bookmarks />
+				path: 'communities',
+				element: <Communities />
 			},
 			{
-				path: ':slug',
+				path: ':profile',
 				element: <Profile />
 			},
 		

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import Logo from "../../layouts/main/sidebar/logo/Logo";
+
 import { useAccount } from "../../store/auth/hooks";
 import { useDispatch } from "react-redux";
 import { _setCurrentAccount } from "../../store/auth";

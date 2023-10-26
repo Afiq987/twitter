@@ -61,8 +61,8 @@ const account=useAccount()
 
   };
   return (
-    <div className="for-you flex flex-wrap mt-[110px] ">
-      <div className="flex border-b border-gray-800 w-full">
+    <div className="for-you flex flex-wrap mt-[10px] ">
+      <div className="flex border-b border-gray-700 w-full">
       <div className="flex space-x-4 px-4 py-3 ">
         <img
           src="https://pbs.twimg.com/profile_images/1706362039935938560/_epNszdP_400x400.jpg"
@@ -123,9 +123,9 @@ const account=useAccount()
           <Post {...post} key={key} />
         ))}
       </WVList>
-      <div className="rounded-md">
+      {/* <div className="rounded-md">
         <img src={`data:image/jpeg;base64,${img}`} alt="foto" />
-      </div>
+      </div> */}
     </div>
   );
 }

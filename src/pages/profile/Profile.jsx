@@ -11,7 +11,10 @@ export default function Profile() {
     <>
       <Header />
     <ProfilePic/>
- <MyPosts/>
+    <div className="mt-[250px]">
+    <MyPosts/>
+    </div>
+
     </>
   );
 }

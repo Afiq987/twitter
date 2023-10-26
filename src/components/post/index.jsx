@@ -40,11 +40,11 @@ export default function Post({ img, value }) {
                 className="hover:underline flex items-center font-bold"
               ></a>
               <div className="text-[color:var(--color-base-secondary)] flex items-center gap-1.5">
-                <div></div>
+               
               </div>
             </header>
-            <Posted/>
-            <MyPosts/>
+            {/* <Posted/> */}
+            {/* <MyPosts/> */}
           </div>
         </div>
       </div>
