@@ -22,9 +22,11 @@ export default function ForYou() {
   const [value, setValue] = useState("");
   const [img, setImg] = useState("");
 const account=useAccount()
+const userId=localStorage.getItem("userId")
+
   const post = async () => {
     const response = await fetch(
-      `https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${account.id}/posts.json`,
+      `https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}/posts.json`,
       {
         method: "POST", // or 'PUT'
         headers: {
@@ -36,7 +38,7 @@ const account=useAccount()
   };
 
   useEffect(() => {
-    fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${account.id}/posts.json`)
+    fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}/posts.json`)
       .then((res) => res.json())
       .then((data) => console.log(data,"daatalat"));
   }, []);

@@ -24,7 +24,7 @@ function Login() {
         // ...
       
         localStorage.setItem("user",true)
-        console.log("giris edildi");
+        localStorage.setItem("userId",user.uid)
         window.location.reload()
       })
       .catch((error) => {
@@ -36,7 +36,6 @@ function Login() {
       dispatch(_setCurrentAccount({
         email
       }));
-      console.log(account);
   };
 
   return (

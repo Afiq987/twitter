@@ -1,10 +1,13 @@
 import React from 'react'
-import {topics} from "../../utils/consts"
+import { topics } from '../../utils/consts'
+
 function ExploreTopics() {
+	
   return (
     <>
-        {topics.map((item)=>
-	<div className="p-3">
+    {
+		topics.map(item=>(
+<div className="p-3">
 	<div className="text-[0.813rem] text-[color:var(--color-base-secondary)] ">
 			{item.title}
 		</div>
@@ -15,8 +18,11 @@ function ExploreTopics() {
 			{item.postCount}k posts
 		</div>
 	</div>
+		))
+	}   
 	
-	)}
+	
+	
     </>
   )
 }

@@ -10,7 +10,7 @@ export default function Home() {
 	return (
 		<div className="w-[490px] m-auto sm:w-full">
 			<Tab activeTab="for-you">
-				<StickyHeader title="Home">
+				<StickyHeader >
 					<Tab.Items>
 						<Tab.Item id="for-you">
 							For you

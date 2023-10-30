@@ -3,22 +3,69 @@ import {Popover, Transition} from "@headlessui/react";
 import {useAccount} from "../../../../store/auth/hooks";
 
 import More from "./more";
+import { useEffect, useState } from "react";
 
 export default function Account({user}) {
 
-	const account = useAccount()
-
+	const [activeUser, setActiveUser] = useState(null);
+	const userId=localStorage.getItem("userId")
+  
+	useEffect(() => {
+	  fetch(
+		`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`
+	  )
+		.then((res) => res.json())
+		.then((data) => setActiveUser(data));
+	}, []);
+	const account = useAccount();
+  
+  
+	const profileImgChange = (event) => {
+	  const file = event.target.files[0];
+  
+	  if (file) {
+		const reader = new FileReader();
+  
+		reader.onloadend = () => {
+		  const base64String = reader.result.split(",")[1];
+  
+		  fetch(
+			`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`,
+			{
+			  method: 'PATCH', 
+			  headers: {
+				'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify({
+				profileImg: base64String,
+			  }),
+			}
+		  )
+			.then((res) => res.json())
+			.then((data) => {
+			  console.log('Profile image updated:', data);
+			  
+			})
+			.catch((error) => {
+			  console.error('Error updating profile image:', error);
+			});
+		};
+  
+		reader.readAsDataURL(file);
+	  }
+	  console.log(activeUser);
+	};
 	return (
 		<div className="mt-auto">
 			<Popover className="relative">
 				<Popover.Button
 					className="my-3 lg:p-3 rounded-full hover:bg-[color:var(--background-third)] w-full flex text-left items-center transition-colors outline-none"
 				>
-					<img src={account.avatar} className="w-10 flex-shrink-0 h-10 rounded-full" alt=""/>
+					<img  src={`data:image/jpeg;base64,`+activeUser?.profileImg} className="w-10 flex-shrink-0 h-10 rounded-full" alt=""/>
 					<div className="mx-3">
-						<h6 className="font-bold leading-[1.25rem] hidden lg:block">{account.fullName}</h6>
+						<h6 className="font-bold leading-[1.25rem] hidden lg:block ">{activeUser?.userName}</h6>
 						<div className="text-[color:var(--color-base-secondary)] hidden lg:block">
-							@{account.username}
+							@{activeUser?.userName}
 						</div>
 					</div>
 					<svg viewBox="0 0 24 24" className="ml-auto h-[1.172rem]">

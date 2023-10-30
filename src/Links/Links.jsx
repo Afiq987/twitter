@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home/Home";
 import Explore from "../pages/explore/Explore";
 import Notifications from "../pages/notifications/Notifications";
@@ -10,56 +10,67 @@ import Lists from "../pages/lists/Lists";
 import Communities from "../pages/communities/Communities";
 import Login from "../components/login/Login";
 import Register from "../components/login/Register";
+import MyPosts from "../pages/profile/MyPosts";
+import Replies from "../pages/profile/Replies";
 
 const links = createBrowserRouter([
-	{
-		path: '/',
-		element: <MainLayout />,
-		children: [
-			{
-				index: true,
-				element: <Home />
-			},
-			{
-				path: 'explore',
-				element: <Explore />
-			},
-			{
-				path: 'notifications',
-				element: <Notifications />
-			},
-			{
-				path: 'messages',
-				element: <Messages />
-			},
-			{
-				path: 'lists',
-				element: <Lists />
-			},
-			{
-				path: 'communities',
-				element: <Communities />
-			},
-			{
-				path: ':profile',
-				element: <Profile />
-			},
-		
-			{
-				path: '*',
-				element: <NotFound />
-			}
-		]
-		
-	},
-	{
-		path:"login",
-		element:<Login/>
-	},
-	{
-		path:"register",
-		element:<Register/>
-	},
-])
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "explore",
+        element: <Explore />,
+      },
+      {
+        path: "notifications",
+        element: <Notifications />,
+      },
+      {
+        path: "messages",
+        element: <Messages />,
+      },
+      {
+        path: "lists",
+        element: <Lists />,
+      },
+      {
+        path: "communities",
+        element: <Communities />,
+      },
+      {
+        path: ":profile",
+        element: <Profile />,
+        children: [
+          {
+            index: true,
+            element: <MyPosts />,
+          },
+		  {
+			path:"replies",
+			element:<Replies/>
+		  }
+        ],
+      },
 
-export default links
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+]);
+
+export default links;

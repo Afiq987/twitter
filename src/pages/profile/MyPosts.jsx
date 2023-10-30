@@ -2,29 +2,33 @@ import React, { useEffect, useState } from 'react'
 import { useAccount } from '../../store/auth/hooks';
 import { useSelector } from 'react-redux';
 import Posted from "../../components/post/Posted";
+
 function MyPosts() {
     const account = useAccount();
     const posts = useSelector((state) => state.postReducer.posts);
     const [activeUser,setActiveUser]=useState([])
-  console.log(account);
+  const userId=localStorage.getItem("userId")
     useEffect(() => {
-      fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${account.id}/posts.json`)
+      fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`)
         .then((res) => res.json())
-        .then((data) =>setActiveUser(Object.values(data)));
+        .then((data) =>setActiveUser(data));
     }, []);
+
+	const postlar=(Object.values(activeUser?.posts!=null&&activeUser?.posts))
+	console.log(postlar);
   return (
     <>
      <div className="  ">
-        {[...activeUser].reverse().map((item, index) => (
+        {[...postlar].reverse().map((item, index) => (
             <div className="flex ">
 			<img
-			  src={account.avatar}
+			  src={activeUser?.profileImg?`data:image/jpeg;base64,${activeUser?.profileImg}`:"https://tse1.mm.bing.net/th?id=OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd&pid=Api&P=0&h=220"}
 			  className="w-10 z-[-5] flex-shrink-0 h-10 rounded-full"
 			  alt=""
 			/>
 			<div>
 			  <div className="mx-3 flex gap-2">
-				<h6 className="font-bold leading-[1.25rem]">{account.fullName}</h6>
+				<h6 className="font-bold leading-[1.25rem]">{activeUser?.userName}</h6>
 				{
 				  <svg
 					viewBox="0 0 22 22"
@@ -37,7 +41,7 @@ function MyPosts() {
 				  </svg>
 				}
 				<div className="text-[color:var(--color-base-secondary)]">
-				  @{account.username} <span>·</span>10s
+				  @{activeUser?.userName} <span>·</span>10s
 				</div>
 			  </div>
 			  <div className="flex-1">
@@ -56,6 +60,7 @@ function MyPosts() {
 		  </div>
         ))}
       </div>
+	 
     </>
   )
 }

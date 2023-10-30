@@ -5,7 +5,7 @@ import classNames from "classnames";
 import {setCurrentAccount} from "../../../../../store/auth/actions";
 import { Link } from "react-router-dom";
 import Login from "../../../../../components/login/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function More({ close,user,signIn }) {
 
@@ -15,7 +15,54 @@ export default function More({ close,user,signIn }) {
 	  localStorage.setItem("user",false)
 	  window.location.reload()
 	}
-
+	const [activeUser, setActiveUser] = useState(null);
+	const userId=localStorage.getItem("userId")
+  
+	useEffect(() => {
+	  fetch(
+		`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`
+	  )
+		.then((res) => res.json())
+		.then((data) => setActiveUser(data));
+	}, []);
+	const account = useAccount();
+  
+  
+	const profileImgChange = (event) => {
+	  const file = event.target.files[0];
+  
+	  if (file) {
+		const reader = new FileReader();
+  
+		reader.onloadend = () => {
+		  const base64String = reader.result.split(",")[1];
+  
+		  fetch(
+			`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`,
+			{
+			  method: 'PATCH', 
+			  headers: {
+				'Content-Type': 'application/json',
+			  },
+			  body: JSON.stringify({
+				profileImg: base64String,
+			  }),
+			}
+		  )
+			.then((res) => res.json())
+			.then((data) => {
+			  console.log('Profile image updated:', data);
+			  
+			})
+			.catch((error) => {
+			  console.error('Error updating profile image:', error);
+			});
+		};
+  
+		reader.readAsDataURL(file);
+	  }
+	  console.log(activeUser);
+	};
 
 	return (
 		<>
@@ -31,11 +78,12 @@ export default function More({ close,user,signIn }) {
 						"hover:bg-[color:var(--background-secondary)]": currentAccount.id !== account.id
 					})}
 				>
-					<img src={account.avatar} className="w-10 h-10 rounded-full" alt=""/>
+				
+					<img src={`data:image/jpeg;base64,`+activeUser?.profileImg} className="w-10 h-10 rounded-full" alt=""/>
 					<div className="mx-3 flex-1">
-						<h6 className="font-bold leading-[1.25rem]">{account.fullName}</h6>
+						<h6 className="font-bold leading-[1.25rem]">{activeUser?.userName}</h6>
 						<div className="text-[color:var(--color-base-secondary)] ">
-							@{account.username}
+							@{activeUser?.userName}
 						</div>
 					</div>
 					{currentAccount.id === account.id && (
@@ -54,15 +102,12 @@ export default function More({ close,user,signIn }) {
 			</button>
 			</Link> 
 		
-			<button
-				className="py-3 px-4 text-left transition-colors hover:bg-[color:var(--background-secondary)] w-full font-bold leading-[1.25rem]">
-				Manage accounts
-			</button>
+			
 			<button
 			onClick={signOut}
 				className="py-3 px-4 text-left transition-colors hover:bg-[color:var(--background-secondary)] w-full font-bold leading-[1.25rem]">
 				<div className="max-w-[228px]">
-				Log out@{currentAccount.username} 
+				Log out@{activeUser?.userName}
 				</div>
 			</button>
 		

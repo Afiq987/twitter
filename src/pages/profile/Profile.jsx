@@ -1,20 +1,41 @@
 
-import Header from "./Header";
 
 
-import ProfilePic from "./ProfilePic";
+
+
 import MyPosts from "./MyPosts";
+
+
+
+
+import { NavLink, Outlet, Route, Routes } from "react-router-dom";
+
+import PostsTab from "./PostsTab";
+
+
 
 export default function Profile() {
 
   return (
     <>
-      <Header />
-    <ProfilePic/>
-    <div className="mt-[250px]">
-    <MyPosts/>
-    </div>
+   
+<PostsTab/>
+<div className="mt-[350px]">
+<Outlet/>
+</div>
 
+     
+
+
+
+
+      
+       
+   
+
+
+
+    
     </>
   );
 }

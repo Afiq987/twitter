@@ -38,6 +38,7 @@ function Register({ login }) {
           userName: name,
           email: email,
           profileImg: "",
+          posts:[]
         });
       })
       .catch((error) => {
