@@ -22,8 +22,10 @@ export default function Home() {
 				</StickyHeader>
 				<Tab.Content id="for-you">
 					<ForYou />
-					
+					<div className="mt-[-700px]">
 					<MyPosts />
+					</div>
+					
 				
 					
 				</Tab.Content>

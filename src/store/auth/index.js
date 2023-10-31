@@ -3,21 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Define the initial state
 const initialState = {
-	currentAccount: {	
-		id: 1,
-		username: 'Afiq_Hasanov87',
-		fullName: 'Afiq Hasanov (Aydın)',
-		avatar: 'https://pbs.twimg.com/profile_images/1706362039935938560/_epNszdP_400x400.jpg'
-	},
-  accounts: [
-    {
-      id: 1,
-      username: 'Afiq_Hasanov87',
-      fullName: 'Afiq Hasanov (Aydın)',
-      avatar: 'https://pbs.twimg.com/profile_images/1706362039935938560/_epNszdP_400x400.jpg',
-    },
-  
-  ],
+	currentAccount: {	},
+  accounts: [],
 };
 
 // Create the auth slice

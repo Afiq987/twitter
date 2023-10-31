@@ -18,11 +18,23 @@ import { useAccount } from "../../../store/auth/hooks";
 
 export default function ForYou() {
   const dispatch=useDispatch();
+  //1
+  const [activeUser, setActiveUser] = useState(null);
+  2//
   const posts = useSelector((state) => state.postReducer.posts);
   const [value, setValue] = useState("");
   const [img, setImg] = useState("");
 const account=useAccount()
 const userId=localStorage.getItem("userId")
+//1
+useEffect(() => {
+  fetch(
+    `https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`
+  )
+    .then((res) => res.json())
+    .then((data) => setActiveUser(data));
+}, []);
+//2
 
   const post = async () => {
     const response = await fetch(
@@ -64,10 +76,11 @@ const userId=localStorage.getItem("userId")
   };
   return (
     <div className="for-you flex flex-wrap mt-[10px] ">
-      <div className="flex border-b border-gray-700 w-full">
+      <div className="flex border-b w-full border-[color:var(--background-third)]">
       <div className="flex space-x-4 px-4 py-3 ">
         <img
-          src="https://pbs.twimg.com/profile_images/1706362039935938560/_epNszdP_400x400.jpg"
+          // src="https://pbs.twimg.com/profile_images/1706362039935938560/_epNszdP_400x400.jpg"
+          src={`data:image/jpeg;base64,`+activeUser?.profileImg}
           alt="profileFoto"
           className="w-10 h-10 rounded-full"
         />

@@ -5,7 +5,7 @@ function Posted({ value, img }) {
     <div className="ps-3">
       <div>{value}</div>
 <div className="border border-gray-700 rounded-xl">
-<img className="max-w-[540px] rounded-xl " src={`data:image/jpeg;base64,${img}`} alt="" />
+<img className=" rounded-xl " src={`data:image/jpeg;base64,${img}`} alt="" />
 
 </div>
       <div className="flex -ml-1.5 mt-1.5">

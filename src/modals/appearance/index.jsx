@@ -249,7 +249,7 @@ export default function AppearanceModal({close}) {
 				</div>
 
 				<div className="flex items-center justify-center pt-4">
-					<button onClick={close}>Done</button>
+					<button className="px-4 h-9  font-bold rounded-full bg-[color:var(--color-primary)] hover:opacity-90 text-white " onClick={close}>Done</button>
 				</div>
 
 			</div>

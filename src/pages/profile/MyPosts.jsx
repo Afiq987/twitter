@@ -18,7 +18,7 @@ function MyPosts() {
 	console.log(postlar);
   return (
     <>
-     <div className="  ">
+     <div className=" px-4 ">
         {[...postlar].reverse().map((item, index) => (
             <div className="flex ">
 			<img
