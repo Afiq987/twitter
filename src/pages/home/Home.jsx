@@ -5,8 +5,12 @@ import Tab from "../../components/tab";
 import { Timeline } from 'react-twitter-widgets'
 import ForYou from "./for-you/ForYou";
 import MyPosts from "../profile/MyPosts";
+import { setProfile } from "../../store/profileReducer/ProfileReducer";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 export default function Home() {
+	
 	return (
 		<div className="w-[490px] m-auto sm:w-full">
 			<Tab activeTab="for-you">

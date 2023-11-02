@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { BackwardIcon, DotsIcon, NewCommunIcon, SearchIcon } from "../home/postArea/homePostIcons";
+import { Link } from "react-router-dom";
 
 export default function Communities() {
 
@@ -37,7 +38,13 @@ export default function Communities() {
 			className="sticky flex items-center my-1  border-[color:var(--background-third)] top-0 z-10 bg-[color:var(--background-primary-alpha)] backdrop-blur-md">
 	
 				<div className="px-2 flex items-center ">
-				<BackwardIcon />
+				
+				<Link to={"/"}>
+	<svg viewBox="0 0 24 24" className="h-5 px-5">
+					<path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z" fill="var(--color-base)"/>
+					</svg>
+	</Link>
+				
 				</div>
 				<label className="h-[2.688rem] flex items-center rounded-full bg-transparent w-full relative group border border-gray-700 focus-within:bg-[color:var(--background-primary)] focus-within:border-[color:var(--color-primary)]">
 

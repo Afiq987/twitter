@@ -1,10 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const initialState = {
+export const initialState = {
 	profile: []
 }
 
-const posted = createSlice({
+export const posted = createSlice({
 	name: 'profilePhoto',
 	initialState,
 	reducers: {
@@ -14,5 +14,5 @@ const posted = createSlice({
 	}
 })
 
-export const { setProfile } = profChange.actions
-export default profChange.reducer
+export const { setProfile } = posted.actions
+export default posted.reducer

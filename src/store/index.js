@@ -7,6 +7,7 @@ import modal from "./modal";
 import appearance from "./appearance";
 import feed from "./feed";
 import postReducer from "./postReducer/postReducer";
+import ProfileReducer from "./profileReducer/ProfileReducer";
 
 const store = configureStore({
 	reducer: {
@@ -14,7 +15,8 @@ const store = configureStore({
 		modal,
 		appearance,
 		feed,
-		postReducer
+		postReducer,
+		ProfileReducer
 	}
 })
 

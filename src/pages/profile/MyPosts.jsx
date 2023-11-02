@@ -6,15 +6,12 @@ import Posted from "../../components/post/Posted";
 function MyPosts() {
     const account = useAccount();
     const posts = useSelector((state) => state.postReducer.posts);
-    const [activeUser,setActiveUser]=useState([])
+ 
   const userId=localStorage.getItem("userId")
-    useEffect(() => {
-      fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`)
-        .then((res) => res.json())
-        .then((data) =>setActiveUser(data));
-    }, []);
 
-	const postlar=(Object.values(activeUser?.posts!=null&&activeUser?.posts))
+  const profile = useSelector((state) => state.ProfileReducer.profile);
+
+	const postlar=(Object.values(profile?.posts!=null&&profile?.posts))
 	console.log(postlar);
   return (
     <>
@@ -22,13 +19,13 @@ function MyPosts() {
         {[...postlar].reverse().map((item, index) => (
             <div className="flex ">
 			<img
-			  src={activeUser?.profileImg?`data:image/jpeg;base64,${activeUser?.profileImg}`:"https://tse1.mm.bing.net/th?id=OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd&pid=Api&P=0&h=220"}
+			  src={profile?.profileImg?`data:image/jpeg;base64,${profile?.profileImg}`:"https://tse1.mm.bing.net/th?id=OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd&pid=Api&P=0&h=220"}
 			  className="w-10 z-[-5] flex-shrink-0 h-10 rounded-full"
 			  alt=""
 			/>
 			<div>
 			  <div className="mx-3 flex gap-2">
-				<h6 className="font-bold leading-[1.25rem]">{activeUser?.userName}</h6>
+				<h6 className="font-bold leading-[1.25rem]">{profile?.userName}</h6>
 				{
 				  <svg
 					viewBox="0 0 22 22"
@@ -41,7 +38,7 @@ function MyPosts() {
 				  </svg>
 				}
 				<div className="text-[color:var(--color-base-secondary)]">
-				  @{activeUser?.userName} <span>·</span>10s
+				  @{profile?.userName} <span>·</span>10s
 				</div>
 			  </div>
 			  <div className="flex-1">

@@ -18,7 +18,7 @@ export default function Explore() {
 const filteredTopics = topics.filter((item) =>
   item.name && item.name.toLowerCase().includes(searchInput.toLowerCase())
 );
-
+const [searcValue,setSearchValue]=useState("")
 
   return (
     <div>
@@ -27,8 +27,8 @@ const filteredTopics = topics.filter((item) =>
           <div className="px-4 pt-1 w-[80%]">
             <label className="h-[2.688rem] flex items-center rounded-full bg-transparent w-full relative group border border-gray-700 focus-within:bg-[color:var(--background-primary)] focus-within:border-[color:var(--color-primary)]">
               <SearchIcon />
-              <input 
-                type="text"
+              <input  value={searcValue} onChange={(e)=>setSearchValue(e.target.value)}
+                type="search"
                 placeholder="Search Lists"
                 // value={searchInput}
                 // onChange={(e) => setSearchInput(e.target.value)}
@@ -47,7 +47,7 @@ const filteredTopics = topics.filter((item) =>
         </div>
       </div>
 
-      <ExploreTopics/>
+      <ExploreTopics searcValue={searcValue}/>
     </div>
   );
 }

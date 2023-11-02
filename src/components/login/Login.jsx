@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 
@@ -12,7 +12,8 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const account=useAccount()
+    const account=useAccount();
+    const location=useLocation()
   const login = (e) => {
     e.preventDefault()
     const auth = getAuth();
@@ -26,6 +27,7 @@ function Login() {
         localStorage.setItem("user",true)
         localStorage.setItem("userId",user.uid)
         window.location.reload()
+        location("/")
       })
       .catch((error) => {
         const errorCode = error.code;

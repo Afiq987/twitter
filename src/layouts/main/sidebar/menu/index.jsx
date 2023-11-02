@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
 
 import { leftSideMenu } from "../../../../utils/consts";
 
@@ -8,9 +9,11 @@ import More from "./more";
 import New from "./new";
 
 import { useAccount } from "../../../../store/auth/hooks";
-import { useSelector } from "react-redux";
+import { setProfile } from "../../../../store/profileReducer/ProfileReducer";
+import { useEffect } from "react";
 
 export default function Menu() {
+ 
   const account = useAccount();
   const feeds= useSelector(state => state.feed);
   return (

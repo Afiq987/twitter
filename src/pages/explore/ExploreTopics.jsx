@@ -1,12 +1,12 @@
 import React from 'react'
 import { topics } from '../../utils/consts'
 
-function ExploreTopics() {
-	
+function ExploreTopics({searcValue}) {
+	const filterTopic=topics.filter(t=>t.topic.value.toLowerCase().startsWith(searcValue.toLowerCase()))
   return (
     <>
     {
-		topics.map(item=>(
+		filterTopic.map(item=>(
 <div className="p-3">
 	<div className="text-[0.813rem] text-[color:var(--color-base-secondary)] ">
 			{item.title}
