@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 
 
 
@@ -12,7 +12,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const account=useAccount();
+    
     const location=useLocation()
   const login = (e) => {
     e.preventDefault()
@@ -20,14 +20,17 @@ function Login() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        
         const user = userCredential.user;
-        // ...
+      
       
         localStorage.setItem("user",true)
         localStorage.setItem("userId",user.uid)
         window.location.reload()
         location("/")
+        dispatch(_setCurrentAccount({
+          email
+        }));
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -35,9 +38,7 @@ function Login() {
         console.log("sehvdir");
     
       });
-      dispatch(_setCurrentAccount({
-        email
-      }));
+    
   };
 
   return (
@@ -64,7 +65,7 @@ function Login() {
 
       <div className="px-[25%]">
       <h2 className="text-left text-3xl font-bold my-9">Sign in to X</h2>
-      <form action="" onClick={login}>
+      <form  onSubmit={login}>
         <input className="h-[60px] w-full bg-transparent before: border border-gray rounded-sm "
           type="email"
           placeholder="Phone, email, or username"
@@ -80,9 +81,9 @@ function Login() {
         <button className="w-full bg-white text-[#0F1419] text-xl rounded-full py-[5px] font-semibold">Sign in</button>
       </form>
 
-      <Link className="block text-center mt-6 bg-white text-[#0F1419] text-xl rounded-full py-[5px] font-semibold" to="/register" login={login}>Register</Link>
+      <Link className="block text-center mt-6 bg-white text-[#0F1419] text-xl rounded-full py-[5px] font-semibold" to="/register" >Register</Link>
 
-      <button className="w-full text-center mt-6 bg-transparent text-white  border border-gray rounded-full py-[5px] font-semibold" to="/register">Forgot password?</button>
+      <button type="submit" className="w-full text-center mt-6 bg-transparent text-white  border border-gray rounded-full py-[5px] font-semibold" to="/register">Forgot password?</button>
       </div>
       
       </div>

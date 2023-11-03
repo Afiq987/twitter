@@ -89,7 +89,7 @@ function Register({ login }) {
           <h2 className="text-left text-3xl font-bold my-9">Sign in to X</h2>
           <form action="" onClick={login}>
             <input
-              className="h-[60px] w-full bg-transparent before: border border-gray rounded-sm "
+              className="h-[60px] my-6 w-full bg-transparent before: border border-gray rounded-sm "
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

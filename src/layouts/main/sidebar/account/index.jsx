@@ -80,7 +80,7 @@ export default function Account({user}) {
 					leaveTo="transform opacity-0"
 				>
 					<Popover.Panel
-						className="absolute bottom-[80px] -translate-y-2 py-3 w-[300px] z-[1] left-1/2 -translate-x-1/2 bg-[color:var(--background-primary)] shadow-box rounded-2xl">
+						className="   absolute bottom-[80px]  -translate-y-2 left-[140px]  py-3 w-[300px] z-[1] lg:left-1/2 -translate-x-1/2 bg-[color:var(--background-primary)] shadow-box rounded-2xl">
 						{({ close }) => (
 							<More close={close} user={user}/>
 						)}
