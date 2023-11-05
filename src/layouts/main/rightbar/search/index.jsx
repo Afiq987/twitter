@@ -30,7 +30,8 @@ export default function Search() {
 				</div>
 				<input
 					type="text"
-					placeholder="Search"
+					
+					
 					className="w-full h-full bg-transparent rounded-full outline-none pl-[3.5rem]"
 					value={query}
 					onFocus={() => setFocus(true)}
@@ -62,3 +63,6 @@ export default function Search() {
 		</div>
 	)
 }
+
+
+

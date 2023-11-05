@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Home from '../home/Home'
+import { useSelector } from 'react-redux';
 
 function Header() {
+	const profile = useSelector((state) => state.ProfileReducer.profile);
   return (
     <div className="sticky   flex  border-b border-[color:var(--background-third)] top-0 z-10 bg-[color:var(--background-primary-alpha)] backdrop-blur-md items-center ">
 	<Link to={"/"}>
@@ -14,7 +16,7 @@ function Header() {
 				
 				<div>
 		<h3 className="px-4  flex items-center text-xl font-bold">
-				Afiq Hasanov (Aydın)
+		{profile?.userName}
 			</h3>
 			<p className="ms-4 text-[0.813rem] text-[color:var(--color-base-secondary)] mb-2">5 post </p>
 				</div>

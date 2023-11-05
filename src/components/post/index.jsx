@@ -43,8 +43,8 @@ export default function Post({ img, value }) {
                
               </div>
             </header>
-            {/* <Posted/> */}
-            {/* <MyPosts/> */}
+            {/* <Posted/>
+            <MyPosts/> */}
           </div>
         </div>
       </div>

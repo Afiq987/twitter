@@ -1,6 +1,7 @@
 import Post from "../../../components/post";
 import { WVList } from "virtua";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   EmojiIcon,
   GalleryIcon,
@@ -9,25 +10,21 @@ import {
   PollIcon,
   ScheduleIcon,
 } from "../postArea/homePostIcons";
-import { useDispatch, useSelector } from "react-redux";
-import { setPosts } from "../../../store/postReducer/postReducer";
-import { object } from "prop-types";
+
 import { useAccount } from "../../../store/auth/hooks";
-import { setProfile } from "../../../store/profileReducer/ProfileReducer";
 
 export default function ForYou() {
   const dispatch = useDispatch();
-  //1
-  const [profile, setprofile] = useState(null);
-  2; //
+ 
+ 
   const posts = useSelector((state) => state.postReducer.posts);
   const profilePic = useSelector((state) => state.ProfileReducer.profile);
   const [value, setValue] = useState("");
   const [img, setImg] = useState("");
   const account = useAccount();
 
-  //2
-  console.log(profile);
+ 
+const userId =localStorage.getItem("userId");
 
   const post = async () => {
     const response = await fetch(
@@ -45,10 +42,7 @@ export default function ForYou() {
 
 
   const handleFileChange = (event) => {
-    // const fileInput = document.getElementById("fileInput");
-    // fileInput.click();
-
-    // const handleFileChange = (event) => {
+    
     const file = event.target.files[0];
 
     if (file) {
@@ -67,7 +61,6 @@ export default function ForYou() {
       <div className="flex border-b w-full border-[color:var(--background-third)]">
         <div className="flex space-x-4 px-4 py-3 ">
           <img
-            // src="https://pbs.twimg.com/profile_images/1706362039935938560/_epNszdP_400x400.jpg"
             src={`data:image/jpeg;base64,` + profilePic?.profileImg}
             alt="profileFoto"
             className="w-10 h-10 rounded-full"
@@ -123,9 +116,7 @@ export default function ForYou() {
           <Post {...post} key={key} />
         ))}
       </WVList>
-      {/* <div className="rounded-md">
-        <img src={`data:image/jpeg;base64,${img}`} alt="foto" />
-      </div> */}
+     
     </div>
   );
 }

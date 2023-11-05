@@ -3,6 +3,8 @@ import StickyHeader from "../../components/sticky-header";
 import Search from "../../layouts/main/rightbar/search";
 import { BackwardIcon, DotsIcon, MoreIcon, NewListIcon, PlusIcon, SearchIcon } from "../home/postArea/homePostIcons";
 import { useState } from "react";
+import List from "./List";
+import AddedList from "./AddedList";
 
 export default function Lists() {
 	
@@ -26,11 +28,12 @@ export default function Lists() {
 			members:18
 		},
 	]
-
+	const[added,setAdded]=useState([])
 	const [searchInput, setSearchInput] = useState('');
 	const filteredLists = groups.filter((item) =>
 	  item.name.toLowerCase().includes(searchInput.toLowerCase())
 	);
+	
 	return (
 		<>
 			<header
@@ -39,12 +42,14 @@ export default function Lists() {
 				<div className="px-4">
 				<BackwardIcon />
 				</div>
+				
 				<div className="px-4 pt-1 w-[80%]">
 				<label className="h-[2.688rem] flex items-center rounded-full bg-transparent w-full relative group border border-gray-700 focus-within:bg-[color:var(--background-primary)] focus-within:border-[color:var(--color-primary)]">
 
 <SearchIcon/>
-<input 
-				type="text"
+<input id="Search" name="Search"
+
+				type="search"
 				placeholder="Search Lists"
 				value={searchInput}
 				onChange={(e) => setSearchInput(e.target.value)}
@@ -66,29 +71,10 @@ export default function Lists() {
 				</div>
 			<div>
 			<h1 className="py-3 px-5 text-2xl font-bold">Discover new Lists</h1>
-			{filteredLists.map(item=>(
-				<>
-				<div className="flex items-center justify-between mx-4 ">
-				<div className="flex gap-4 m-3 ">
-				<img className="h-12 w-12 rounded-lg" src={item.profilePhoto} alt="" />
-				<div className="flex flex-col">
-				<div className="flex">
-				<div>{item.name}</div>
-				<span className="text-[#536471]"><span className="px-2">·</span>{item.members}</span>
-				<span className="text-[#536471]">members</span></div>
-				<p className="text-[#536471] text-sm">{item.followerCount} followers including @iyoba4u</p>
-				</div>
-				</div>
-				<div className="">
-				<PlusIcon/>
-				</div>
-				
-				</div>
-				
 			
 				
-				</>
-			))}
+				{filteredLists.map((item)=>( <List key={item.name} prod={item} added={added} setAdded={setAdded}/>))}
+			
 			</div>
 			<Link
 					
@@ -96,6 +82,12 @@ export default function Lists() {
 				>
 					Show more
 				</Link>
+				<div>
+			<h1 className="py-3 px-5 text-2xl font-bold">Your lists</h1>
+			<div>
+                {added.map((item)=>(<AddedList key={item.name} addedProd={item}/>))}
+                </div>
+			</div>
 		</>
 	)
 }

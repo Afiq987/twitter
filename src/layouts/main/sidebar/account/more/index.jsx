@@ -95,7 +95,7 @@ export default function More({ close,user,signIn }) {
 					)}
 				</button>
 			))}
-			<div className="h-px bg-[color:var(--background-third)] my-3"/>
+			<div className="h-px  bg-[color:var(--background-third)] my-3"/>
 			<Link to="/login"><button 
 				className="py-3 px-4 text-left transition-colors hover:bg-[color:var(--background-secondary)] w-full font-bold leading-[1.25rem]" >
 				Add an existing account
