@@ -8,13 +8,20 @@ import { useSelector } from "react-redux";
 
 export default function Account({user}) {
 
-	const profile = useSelector((state) => state.ProfileReducer.profile);
+	// const profile = useSelector((state) => state.ProfileReducer.profile);
 	
+	const [activeUser, setActiveUser] = useState(null);
 	const userId=localStorage.getItem("userId")
   
 	
 	const account = useAccount();
-  
+	useEffect(() => {
+		fetch(
+		  `https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`
+		)
+		  .then((res) => res.json())
+		  .then((data) => setActiveUser(data));
+	  }, []);
   
 	const profileImgChange = (event) => {
 	  const file = event.target.files[0];
@@ -57,11 +64,11 @@ export default function Account({user}) {
 				<Popover.Button
 					className="my-3 lg:p-3 rounded-full hover:bg-[color:var(--background-third)] w-full flex text-left items-center transition-colors outline-none"
 				>
-					<img  src={`data:image/jpeg;base64,`+profile?.profileImg} className="w-10 flex-shrink-0 h-10 rounded-full" alt=""/>
+					<img  src={`data:image/jpeg;base64,`+activeUser?.profileImg} className="w-10 flex-shrink-0 h-10 rounded-full" alt=""/>
 					<div className="mx-3">
-						<h6 className="font-bold leading-[1.25rem] hidden lg:block ">{profile?.userName}</h6>
+						<h6 className="font-bold leading-[1.25rem] hidden lg:block ">{activeUser?.userName}</h6>
 						<div className="text-[color:var(--color-base-secondary)] hidden lg:block">
-							@{profile?.userName}
+							@{activeUser?.userName}
 						</div>
 					</div>
 					<svg viewBox="0 0 24 24" className="ml-auto h-[1.172rem]">

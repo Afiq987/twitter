@@ -5,9 +5,14 @@ import AddedList from './AddedList'
 function List({prod,added,setAdded}) {
   
 	const add=(prod)=>{
-		setAdded((prevState)=>[...prevState,prod])
-		console.log(added);
+		const isProductAlreadyAdded = added.some((item) => item.name === prod.name);
+
+		if (!isProductAlreadyAdded) {
+			setAdded((prevState) => [...prevState, prod]);
+		  }
+		
 			}
+			
   return (
     <>
 				<div className="flex items-center justify-between mx-4 ">
@@ -21,7 +26,7 @@ function List({prod,added,setAdded}) {
 				<p className="text-[#536471] text-sm">{prod.followerCount} followers including @iyoba4u</p>
 				</div>
 				</div>
-				<div onClick={()=>add(prod)}>
+				<div  onClick={()=>add(prod)}>
 				<PlusIcon />
 				</div>
                

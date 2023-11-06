@@ -4,28 +4,81 @@ import { useSelector } from 'react-redux';
 import Posted from "../../components/post/Posted";
 
 function MyPosts() {
-    const account = useAccount();
+    // const account = useAccount();
     const posts = useSelector((state) => state.postReducer.posts);
- 
+ //1
+ const [activeUser,setActiveUser]=useState([])
+//2
   const userId=localStorage.getItem("userId")
 
-  const profile = useSelector((state) => state.ProfileReducer.profile);
-
-	const postlar=(Object.values(profile?.posts!=null&&profile?.posts))
+//   const profile = useSelector((state) => state.ProfileReducer.profile);
+//1
+useEffect(() => {
+	fetch(`https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`)
+	  .then((res) => res.json())
+	  .then((data) =>setActiveUser(data));
+  }, []);
+//2
+	const postlar=(Object.values(activeUser?.posts!=null&&activeUser?.posts))
 	console.log(postlar);
+
+//1
+useEffect(() => {
+    fetch(
+      `https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`
+    )
+      .then((res) => res.json())
+      .then((data) => setActiveUser(data));
+  }, []);
+  const account = useAccount();
+const profileImgChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const base64String = reader.result.split(",")[1];
+
+        fetch(
+          `https://twitterlogin-ef68a-default-rtdb.firebaseio.com/users/${userId}.json`,
+          {
+            method: 'PATCH', 
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              profileImg: base64String,
+            }),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log('Profile image updated:', data);
+            
+          })
+          .catch((error) => {
+            console.error('Error updating profile image:', error);
+          });
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+//2
   return (
     <>
      <div className=" px-4 ">
         {[...postlar].reverse().map((item, index) => (
             <div className="flex ">
 			<img
-			  src={profile?.profileImg?`data:image/jpeg;base64,${profile?.profileImg}`:"https://tse1.mm.bing.net/th?id=OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd&pid=Api&P=0&h=220"}
+			  src={activeUser?.profileImg?`data:image/jpeg;base64,${activeUser?.profileImg}`:"https://tse1.mm.bing.net/th?id=OIP.Ghae4OEdb4UmC3hkqpFvLAHaGd&pid=Api&P=0&h=220"}
 			  className="w-10 z-[-5] flex-shrink-0 h-10 rounded-full"
 			  alt=""
 			/>
 			<div>
 			  <div className="mx-3 flex gap-2">
-				<h6 className="font-bold leading-[1.25rem]">{profile?.userName}</h6>
+				<h6 className="font-bold leading-[1.25rem]">{activeUser?.userName}</h6>
 				{
 				  <svg
 					viewBox="0 0 22 22"
@@ -38,7 +91,7 @@ function MyPosts() {
 				  </svg>
 				}
 				<div className="text-[color:var(--color-base-secondary)]">
-				  @{profile?.userName} <span>·</span>10s
+				  @{activeUser?.userName} <span>·</span>10s
 				</div>
 			  </div>
 			  <div className="flex-1">
