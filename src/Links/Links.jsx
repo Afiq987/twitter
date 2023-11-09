@@ -12,6 +12,11 @@ import Login from "../components/login/Login";
 import Register from "../components/login/Register";
 import MyPosts from "../pages/profile/MyPosts";
 import Replies from "../pages/profile/Replies";
+import Media from "../pages/profile/Media";
+import Highlights from "../pages/profile/Highlights";
+import Likes from "../pages/profile/Likes";
+import Posts from "../pages/profile/PostsProfile";
+import PostsProfile from "../pages/profile/PostsProfile";
 
 const links = createBrowserRouter([
   {
@@ -45,16 +50,29 @@ const links = createBrowserRouter([
       {
         path: ":profile",
         element: <Profile />,
-        children: [
-          {
-            index: true,
-            element: <MyPosts />,
-          },
-		  {
-			path:"replies",
-			element:<Replies/>
-		  }
-        ],
+      //   children: [
+      //     {
+      //       index: true,
+      //       path:"postsProfile",
+      //       element:<PostsProfile/>,
+      //     },
+		  // {
+			// path:"replies",
+			// element:<Replies/>
+		  // },
+      // {
+      //   path:"media",
+      //   element:<Media/>
+      //   },
+      //   {
+      //     path:"highlights",
+      //     element:<Highlights/>
+      //     },
+      //     {
+      //       path:"likes",
+      //       element:<Likes/>
+      //       }
+      //   ],
       },
 
       {

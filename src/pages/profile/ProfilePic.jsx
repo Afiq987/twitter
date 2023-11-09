@@ -176,25 +176,25 @@ function ProfilePic() {
       {/* Profile Banner */}
       <div className="relative top-0 z-[-10] max-w-[598px]">
         <img
-          className="h-[250px] w-[600px]"
+          className="h-[250px] w-[600px] mb-5 "
           src={profile?.profileImg ? `data:image/jpeg;base64,${profile?.profileImg}` : "https://img.wallpapersafari.com/desktop/1536/864/2/24/vQrf5b.jpg"}
           alt=""
         />
         <img
           src={profile?.profileImg ? `data:image/jpeg;base64,${profile?.profileImg}` : DEFAULT_PROFILE_IMAGE}
-          className="w-[150px] absolute bottom-[-70px] border-[5px] border-black left-5 h-[150px]  rounded-full"
+          className="w-[150px] absolute bottom-[-70px]  border-[5px] border-black left-5 h-[150px]  rounded-full"
           alt=""
         />
       </div>
 
       {/* Edit Profile Button */}
-      <label className="rounded-full w-20 ms-[70%] border px-2 py-1 font-semibold cursor-pointer">
+      <label className="rounded-full w-20 ms-[70%]   border px-2 py-1  font-semibold cursor-pointer">
         Edit Profile
         <input className="invisible w-1" type="file" onChange={profileImgChange} />
       </label>
 
       {/* User Information */}
-      <div className="absolute top-[430px] ms-2 z-[-5]">
+      <div className="absolute top-[430px] ms-2 z-[-5] ">
         <p className="text-xl font-bold">{profile?.userName}</p>
         <p className="text-[color:var(--color-base-secondary)]">@{profile?.userName}</p>
         <p className="text-[color:var(--color-base-secondary)] flex py-3">

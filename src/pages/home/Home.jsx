@@ -12,7 +12,7 @@ import { useEffect } from "react";
 export default function Home() {
 	
 	return (
-		<div className="w-[490px] m-auto sm:w-full">
+		<div className=" m-auto ">
 			<Tab activeTab="for-you">
 				<StickyHeader >
 					<Tab.Items>

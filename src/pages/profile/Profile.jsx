@@ -20,9 +20,9 @@ export default function Profile() {
     <>
    
 <PostsTab/>
-<div className="mt-[350px]">
+{/* <div className="mt-[350px] ">
 <Outlet/>
-</div>
+</div> */}
 
      
 
